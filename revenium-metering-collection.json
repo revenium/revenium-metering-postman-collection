@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "2146df25-5e37-4fd5-965b-306483c439b3",
+		"name": "Revenium Metering API",
+		"description": "Revenium Metering API\n\nContact Support:\n Name: Revenium\n Email: info@revenium.io",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19150695"
+	},
+	"item": [
+		{
+			"name": "meter",
+			"item": [
+				{
+					"name": "product-key",
+					"item": [
+						{
+							"name": "Determine if a ProductKey is valid or not",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/meter/product-key?productKey=<string>&application=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"meter",
+										"product-key"
+									],
+									"query": [
+										{
+											"key": "productKey",
+											"value": "<string>",
+											"description": "The product key"
+										},
+										{
+											"key": "application",
+											"value": "<string>",
+											"description": "The application ID"
+										}
+									]
+								},
+								"description": "Determine if a ProductKey is valid or not"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/meter/product-key?productKey=<string>&application=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"meter",
+												"product-key"
+											],
+											"query": [
+												{
+													"key": "productKey",
+													"value": "<string>",
+													"description": "The product key"
+												},
+												{
+													"key": "application",
+													"value": "<string>",
+													"description": "The application ID"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Insert API metering data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"method\": \"<string>\",\n  \"platformAPIKey\": \"<string>\",\n  \"requestHeaders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"responseCode\": \"<integer>\",\n  \"responseHeaders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"api\": \"<string>\",\n  \"productKey\": \"<string>\",\n  \"application\": \"<string>\",\n  \"url\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backendLatency\": \"<double>\",\n  \"gatewayLatency\": \"<double>\",\n  \"timedOut\": \"<boolean>\",\n  \"requestMessageSize\": \"<long>\",\n  \"responseMessageSize\": \"<long>\",\n  \"userAgent\": \"<string>\",\n  \"remoteUser\": \"<string>\",\n  \"remoteHost\": \"<string>\",\n  \"httpProtocol\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"correlationId\": \"<string>\",\n  \"source\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/meter",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"meter"
+							]
+						},
+						"description": "Insert API metering data"
+					},
+					"response": [
+						{
+							"name": "Metering data successfully recorded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"method\": \"<string>\",\n  \"platformAPIKey\": \"<string>\",\n  \"requestHeaders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"responseCode\": \"<integer>\",\n  \"responseHeaders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"api\": \"<string>\",\n  \"productKey\": \"<string>\",\n  \"application\": \"<string>\",\n  \"url\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backendLatency\": \"<double>\",\n  \"gatewayLatency\": \"<double>\",\n  \"timedOut\": \"<boolean>\",\n  \"requestMessageSize\": \"<long>\",\n  \"responseMessageSize\": \"<long>\",\n  \"userAgent\": \"<string>\",\n  \"remoteUser\": \"<string>\",\n  \"remoteHost\": \"<string>\",\n  \"httpProtocol\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"correlationId\": \"<string>\",\n  \"source\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/meter",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"meter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								},
+								{
+									"key": "x-api-key",
+									"value": "REVENIUM_API_KEY",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "event",
+			"item": [
+				{
+					"name": "Save can API event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"responseCode\": \"<integer>\",\n  \"requestId\": \"<string>\",\n  \"eventType\": \"REQUEST\",\n  \"assetId\": \"<string>\",\n  \"productKey\": \"<string>\",\n  \"application\": \"<string>\",\n  \"method\": \"<string>\",\n  \"currentMillis\": \"<long>\",\n  \"uri\": \"<string>\",\n  \"elapsedTime\": \"<long>\",\n  \"metadata\": \"<string>\",\n  \"requestMessageSize\": \"<long>\",\n  \"responseMessageSize\": \"<long>\",\n  \"contentType\": \"<string>\",\n  \"remoteHost\": \"<string>\",\n  \"userAgent\": \"<string>\",\n  \"correlationId\": \"<string>\",\n  \"backendLatency\": \"<double>\",\n  \"clientId\": \"<string>\",\n  \"source\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/event",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"event"
+							]
+						},
+						"description": "Save an API event"
+					},
+					"response": [
+						{
+							"name": "Metering data successfully recorded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"responseCode\": \"<integer>\",\n  \"requestId\": \"<string>\",\n  \"eventType\": \"REQUEST\",\n  \"assetId\": \"<string>\",\n  \"productKey\": \"<string>\",\n  \"application\": \"<string>\",\n  \"method\": \"<string>\",\n  \"currentMillis\": \"<long>\",\n  \"uri\": \"<string>\",\n  \"elapsedTime\": \"<long>\",\n  \"metadata\": \"<string>\",\n  \"requestMessageSize\": \"<long>\",\n  \"responseMessageSize\": \"<long>\",\n  \"contentType\": \"<string>\",\n  \"remoteHost\": \"<string>\",\n  \"userAgent\": \"<string>\",\n  \"correlationId\": \"<string>\",\n  \"backendLatency\": \"<double>\",\n  \"clientId\": \"<string>\",\n  \"source\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/event?x-api-key=REVENIUM_API_KEY",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"event"
+									],
+									"query": [
+										{
+											"key": "x-api-key",
+											"value": "REVENIUM_API_KEY"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.revenium.io/meter/v1/api"
+		}
+	]
+}
