@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "e27c7d0d-e692-4176-bfc3-c74f5c203870",
+		"_postman_id": "50aa0b66-6a2d-4e3e-9773-5632944f3172",
 		"name": "Revenium Metering API",
-		"description": "Revenium Metering API\n\nContact Support:\n Name: Revenium\n Email: info@revenium.io",
+		"description": "### Revenium Metering API\n\nFor questions about interacting with our API, please contact support at support@revenium.io.\n\nDocumentation for each of the endpoints can be found by clicking on the respective folder name.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19150695"
+		"_exporter_id": "10083693"
 	},
 	"item": [
 		{
@@ -49,7 +49,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"payload\": {\n    \"ut_ccf\": \"<string>\"\n  },\n  \"sourceId\": \"<string>\",\n  \"subscriberCredentialId\": \"<string>\",\n  \"sourceType\": \"<string>\"\n}",
+									"raw": "{\n  \"payload\": \"{ \"requestTokens\": \"1\", \"responseTokens\": \"2\"}\",\n  \"sourceId\": \"<string>\",\n  \"subscriberCredentialId\": \"<string>\",\n  \"sourceType\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -77,21 +77,22 @@
 										"header": [
 											{
 												"key": "Content-Type",
-												"value": "application/json"
+												"value": "application/json",
+												"type": "text"
 											},
 											{
 												"key": "Accept",
 												"value": "*/*"
 											},
 											{
-												"description": "Added as a part of security scheme: apikey",
 												"key": "x-api-key",
-												"value": "<API Key>"
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"payload\": {\n    \"ut_ccf\": \"<string>\"\n  },\n  \"sourceId\": \"<string>\",\n  \"subscriberCredentialId\": \"<string>\",\n  \"sourceType\": \"<string>\"\n}",
+											"raw": "{\n  \"payload\":  \"{ \\\"requestTokens\\\": \\\"1\\\", \\\"responseTokens\\\": \\\"2\\\"}\",\n  \"sourceId\": \"<string>\",\n  \"subscriberCredentialId\": \"<string>\",\n  \"sourceType\": \"<string>\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -136,14 +137,14 @@
 												"value": "*/*"
 											},
 											{
-												"description": "Added as a part of security scheme: apikey",
 												"key": "x-api-key",
-												"value": "<API Key>"
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"payload\": {\n    \"ut_ccf\": \"<string>\"\n  },\n  \"sourceId\": \"<string>\",\n  \"subscriberCredentialId\": \"<string>\",\n  \"sourceType\": \"<string>\"\n}",
+											"raw": "{\n  \"payload\": {\n     \"requestTokens\": \"1\", \n     \"responseTokens\": \"2\"\n  },\n  \"sourceId\": \"<string>\",\n  \"subscriberCredentialId\": \"<string>\",\n  \"sourceType\": \"<string>\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -176,7 +177,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "Compared to the metering endpoint, **rating events do not contain analytics data**, but allow for a simpler integration if you are only interested in counting & rating events from your application in Revenium.\n\nRating Events are useful for metering and monetizing non-API centric data from sources like iPaaS applications, legacy billing systems, or Lambda functions.\n\nBelow is an example call to this endpoint. Note that:\n\n- the `sourceId` term below maps to a 'metering ID' on the sources page in the current Revenium UI.\n    \n- the `subscriberCredentialId` can be found in the External ID field on subscriber credentials in the Revenium UI.\n    \n- `payload` maps to metering elements in the Revenium UI where each name of the JSON pair will map to a metering element name.\n    \n\nThe forthcoming v2 API will map these terms to Revenium's current lexicon.\n\n```\ncurl -X POST https://api.revenium.io/meter/v1/api/meter/rate \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: YOUR_API_KEY\" \\\n  -d '{\n    \"sourceId\": \"example-source\",\n    \"subscriberCredentialId\": \"user-123\",\n    \"payload\": {\n      \"rating\": \"5\"\n    },\n    \"sourceType\": \"app\"\n  }'\n\n ```"
 				},
 				{
 					"name": "ingest",
@@ -207,19 +209,19 @@
 								"method": "POST",
 								"header": [
 									{
-										"description": "The subscription id for the metered data",
 										"key": "x-revenium-subscription-id",
-										"value": "<string>"
+										"value": "<string>",
+										"description": "The subscription id for the metered data"
 									},
 									{
-										"description": "The source id for the metered data",
 										"key": "x-revenium-source-id",
-										"value": "<string>"
+										"value": "<string>",
+										"description": "The source id for the metered data"
 									},
 									{
-										"description": "The source type for the metered data",
 										"key": "x-revenium-source-type",
-										"value": "<string>"
+										"value": "<string>",
+										"description": "The source type for the metered data"
 									},
 									{
 										"key": "Content-Type",
@@ -232,7 +234,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "<string>",
+									"raw": "{ \n    \"requestTokens\": \"1\", \n    \"responseTokens\": \"2\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -241,7 +243,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/meter/ingest?sourceId=<string>&subscriptionId=<string>",
+									"raw": "{{baseUrl}}/meter/ingest?sourceId=<string>&subscriberCredentialId=<string>",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -256,7 +258,7 @@
 											"description": "The source ID for the metered data"
 										},
 										{
-											"key": "subscriptionId",
+											"key": "subscriberCredentialId",
 											"value": "<string>",
 											"description": "The subscription ID for the metered data"
 										}
@@ -271,19 +273,19 @@
 										"method": "POST",
 										"header": [
 											{
-												"description": "The subscription id for the metered data",
 												"key": "x-revenium-subscription-id",
-												"value": "<string>"
+												"value": "<string>",
+												"description": "The subscription id for the metered data"
 											},
 											{
-												"description": "The source id for the metered data",
 												"key": "x-revenium-source-id",
-												"value": "<string>"
+												"value": "<string>",
+												"description": "The source id for the metered data"
 											},
 											{
-												"description": "The source type for the metered data",
 												"key": "x-revenium-source-type",
-												"value": "<string>"
+												"value": "<string>",
+												"description": "The source type for the metered data"
 											},
 											{
 												"key": "Content-Type",
@@ -294,9 +296,9 @@
 												"value": "*/*"
 											},
 											{
-												"description": "Added as a part of security scheme: apikey",
 												"key": "x-api-key",
-												"value": "<API Key>"
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
 											}
 										],
 										"body": {
@@ -310,7 +312,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/meter/ingest?sourceId=<string>&subscriptionId=<string>",
+											"raw": "{{baseUrl}}/meter/ingest?sourceId=<string>&subscriberCredentialId=<string>",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -325,7 +327,7 @@
 													"description": "The source ID for the metered data"
 												},
 												{
-													"key": "subscriptionId",
+													"key": "subscriberCredentialId",
 													"value": "<string>",
 													"description": "The subscription ID for the metered data"
 												}
@@ -350,19 +352,19 @@
 										"method": "POST",
 										"header": [
 											{
-												"description": "The subscription id for the metered data",
 												"key": "x-revenium-subscription-id",
-												"value": "<string>"
+												"value": "<string>",
+												"description": "The subscription id for the metered data"
 											},
 											{
-												"description": "The source id for the metered data",
 												"key": "x-revenium-source-id",
-												"value": "<string>"
+												"value": "<string>",
+												"description": "The source id for the metered data"
 											},
 											{
-												"description": "The source type for the metered data",
 												"key": "x-revenium-source-type",
-												"value": "<string>"
+												"value": "<string>",
+												"description": "The source type for the metered data"
 											},
 											{
 												"key": "Content-Type",
@@ -373,9 +375,9 @@
 												"value": "*/*"
 											},
 											{
-												"description": "Added as a part of security scheme: apikey",
 												"key": "x-api-key",
-												"value": "<API Key>"
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
 											}
 										],
 										"body": {
@@ -389,7 +391,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/meter/ingest?sourceId=<string>&subscriptionId=<string>",
+											"raw": "{{baseUrl}}/meter/ingest?sourceId=<string>&subscriberCredentialId=<string>",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -404,7 +406,7 @@
 													"description": "The source ID for the metered data"
 												},
 												{
-													"key": "subscriptionId",
+													"key": "subscriberCredentialId",
 													"value": "<string>",
 													"description": "The subscription ID for the metered data"
 												}
@@ -425,7 +427,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "Use this endpoint to ingest raw JSON metering data.\n\nRaw JSON metering is useful when the structure of the metering data is unknown in advance and you wish for Revenium to extract all key-value pairs from your traffic so that you can create pricing plans based on the content of these key value pairs in the future.\n\nWhen data is sent to this endpoint, Revenium will attempt to extract key/value pairs from the JSON payloads, which will be visible under [Metering Elements](https://docs.revenium.io/user-guide/assets/metering-elements) in Revenium's UI. Once created, you can then configure these metering elements to be used as pricing components in Products in Revenium.\n\nAn example call to this endpoint is below.\n\nNote that:\n\n- the query parameter `sourceId` maps to a 'metering ID' on the sources page in the Revenium UI.\n    \n- the `subscriberCredentialId` can be found in the external ID on a subscriber credential in the Revenium UI\n    \n- the last line can be replaced with any number of JSON key value pairs you wish to submit to Revenium.\n    \n\n```\ncurl -X POST https://api.revenium.io/meter/v1/api/meter/ingest?sourceId=src-456&subscriberCredentialId=sub-123 \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: YOUR_API_KEY\" \\\n  -H \"x-revenium-source-type: custom\" \\\n  -d '{\"hotelRoomsBooked\": \"100\", \"carRentalCount\": \"242\"}'\n\n ```"
 				},
 				{
 					"name": "product-key",
@@ -495,9 +498,9 @@
 												"value": "application/json"
 											},
 											{
-												"description": "Added as a part of security scheme: apikey",
 												"key": "x-api-key",
-												"value": "<API Key>"
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
 											}
 										],
 										"url": {
@@ -545,9 +548,9 @@
 												"value": "application/json"
 											},
 											{
-												"description": "Added as a part of security scheme: apikey",
 												"key": "x-api-key",
-												"value": "<API Key>"
+												"value": "<API Key>",
+												"description": "Added as a part of security scheme: apikey"
 											}
 										],
 										"url": {
@@ -587,7 +590,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "Use this endpoint to check if a subscription is valid by sending the identifer for the subscriber credential tied to that subscription. (read the details on how [subscriber credentials](https://docs.revenium.io/user-guide/manage/applications) and subscriptions work together to allow easy entitlement management for your subscribers)\n\nNote that:\n\n- product keys are now known as 'subscriptions' in the Revenium user interface\n    \n- the `application` value can be found in the External ID field on subscriber credentials in the Revenium UI.\n    \n\nThe forthcoming v2 API will map to Revenium's current lexicon.\n\nBelow is a sample call to this endpoint.\n\n```\ncurl -X GET \"https://api.revenium.io/meter/v1/api/meter/product-key \\\n?application=YOUR_SUBSCRIPTION_CREDENTIAL\" \\\n  -H \"x-api-key: YOUR_API_KEY\"\n\n ```"
 				},
 				{
 					"name": "Submit API metering data",
@@ -659,9 +663,9 @@
 										"value": "*/*"
 									},
 									{
-										"description": "Added as a part of security scheme: apikey",
 										"key": "x-api-key",
-										"value": "<API Key>"
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
 									}
 								],
 								"body": {
@@ -710,9 +714,9 @@
 										"value": "*/*"
 									},
 									{
-										"description": "Added as a part of security scheme: apikey",
 										"key": "x-api-key",
-										"value": "<API Key>"
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
 									}
 								],
 								"body": {
@@ -749,7 +753,8 @@
 						}
 					]
 				}
-			]
+			],
+			"description": "This endpoint is designed for the submission of API-specific monetization and analytics data to Revenium. Revenium's [data connectors](https://docs.revenium.io/user-guide/readme) utilize this endpoint to send analytics to Revenium's platform without requiring custom integration using our metering API.\n\nIf you are not using one of the pre-built connectors and wish to capture the maximum analytics possible for evaluation in Revenium, this is the recommended endpoint to use.\n\nThis endpoint is typically used to send data to Revenium after both the API request is made & the API response is received.\n\nThe data submitted to this endpoint encapsulates the metadata for a single API transaction, providing important details for monetization and observability purposes.\n\nThis is the structure of an example call to the /meter endpoint. _(note you'll have to edit out the comments and determine whether you wish to send the optional information or not)_\n\nNote that the `application` term below maps to a 'Subscriber Credential' in the current Revenium UI. The forthcoming v2 API will map to Revenium's current lexicon.\n\n```\ncurl --request POST \\\n     --url 'https://api.revenium.io/meter/v1/api/meter' \\\n     --header 'content-type: application/json' \\\n     --header 'x-api-key: INSERT REVENIUM API INTEGRATION KEY HERE' \\ #required\n     --data '\n{\n  \"url\": \"https:///fqdn-or-url-of-your-endpoint/example\",# INSERT THE URI or URL OF YOUR API ENDPOINT\n  \"application\": # INSERT EXTERNAL API KEY, OAUTH TOKEN, OR OTHER UNIQUE ID FOR THE USER MAKING THE CALL\n  \"method\": \"POST\",#AUTOMATICALLY GENERATED (AG) FROM API GATEWAY POLICIES, OR CAN BE MANUALLY SENT FROM YOUR CODE  \n  \"responseCode\": 200,#THE COMMA BEFORE THE # SIGN MUST BE REMOVED IF YOU DO NOT INCLUDE ANY OPTIONAL DATA BELOW\n#\n#  ***ALL DATA BELOW IS OPTIONAL***\n#\n  \"monetized\": \"true\", #DEFAULTS TO TRUE IF NOT SET, USED ONLY IN SPECIFIC TESTING SCENARIOS\n  \"backendLatency\": 2.05,# AG FROM GATEWAYS\n  \"gatewayLatency\": 1.05,# AG FROM GATEWAYS\n  \"responseCode\": 200,# AG FROM GATEWAYS\n  \"timedOut\": false, # AG FROM GATEWAYS\n  \"remoteHost\": \"8.8.8.8\",#ALLOWS REPORTING OF API ACCESS BY-GEO-LOCATION (AG FROM GATEWAYS)\n  \"requestMessageSize\": 200,# AG FROM GATEWAYS\n  \"responseMessageSize\": 300,# AG FROM GATEWAYS (double-check final trailing comma for the last item sent)\n  \"elements\": [{\"name\": \"yourElementName\",\n              \"value\": \"yourElementValue\"}]\n}\n'\n\n ```"
 		},
 		{
 			"name": "event",
@@ -804,9 +809,9 @@
 										"value": "application/json"
 									},
 									{
-										"description": "Added as a part of security scheme: apikey",
 										"key": "x-api-key",
-										"value": "<API Key>"
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
 									}
 								],
 								"body": {
@@ -855,9 +860,9 @@
 										"value": "*/*"
 									},
 									{
-										"description": "Added as a part of security scheme: apikey",
 										"key": "x-api-key",
-										"value": "<API Key>"
+										"value": "<API Key>",
+										"description": "Added as a part of security scheme: apikey"
 									}
 								],
 								"body": {
@@ -894,7 +899,8 @@
 						}
 					]
 				}
-			]
+			],
+			"description": "The `/event` endpoint is similar to the `/meter` endpoint but is used to submit API requests and responses separately.\n\nRevenium will then correlate these requests and responses into a single API transaction that mirrors a request to the `/meter` endpoint.\n\nThis endpoint is particularly useful for integrating with asynchronous or stateless API event data, such as from cloud gateways or logging systems.\n\nBelow are two sample calls to the this endpoint.\n\nNote that:\n\n- the `requestId` should be consistent across the API request and response to allow Revenium to correlate the calls\n    \n- the `uri` will be used to map to the '[data source](https://docs.revenium.io/user-guide/assets)' created in Revenium\n    \n- the `application` value to use can be found in the External ID field on subscriber credentials in the Revenium UI.\n    \n- the value for the `source` field should always be CUSTOM when sending your own events to the platform. (in our pre-built connectors, we identify sources such as aws, azure, etc., depending on the vendor of the platform sending these events)\n    \n\n#### Submitting an API Request Event\n\n```\ncurl -X POST https://api.revenium.io/meter/v1/api/event \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: YOUR_API_KEY\" \\\n  -d '\n  {\n  \"requestId\": \"3cbecf2a-edc6-4683-8934-a258d0fc3a09\",\n  \"eventType\": \"REQUEST\",\n  \"method\": \"POST\",\n  \"currentMillis\": 1685402319000,\n  \"uri\": \"/hammerhead-1\",\n  \"source\": \"CUSTOM\",\n  \"application\": \"4d0d8cae-c025-4a4c-907a-3efc0b4c41d1\"\n}'\n\n ```\n\n#### Submitting an API Request Response\n\n```\ncurl -X POST https://api.revenium.io/meter/v1/api/event \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: YOUR_API_KEY\" \\\n  -d '\n  {\n  \"requestId\": \"3cbecf2a-edc6-4683-8934-a258d0fc3a09\",\n  \"eventType\": \"RESPONSE\",\n  \"method\": \"POST\",\n  \"currentMillis\": 1675308955000,\n  \"uri\": \"/hammerhead-1\",\n  \"source\": \"CUSTOM\",\n  \"application\": \"4d0d8cae-c025-4a4c-907a-3efc0b4c41d1\"\n  }'\n\n ```"
 		}
 	],
 	"auth": {
